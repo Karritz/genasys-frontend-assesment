@@ -9,7 +9,7 @@ const routes: Routes = [
     component: CustomerManagementComponent
   }, 
   {
-    path: ':id',
+    path: ':name',
     component: QuoteManagmentComponent
   }
 ];
