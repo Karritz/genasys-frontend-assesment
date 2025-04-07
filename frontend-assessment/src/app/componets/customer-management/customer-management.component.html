@@ -1,12 +1,12 @@
 <div>
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Filter" #input>
+    <div>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Filter" #input>
+    </div>
+    <div>
+        <button mat-button> Add Customer</button>
+    </div>
 </div>
-
-<div>
-    <button mat-button> Add Customer</button>
-</div>
-
 
 <table mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="firstName">
@@ -27,7 +27,11 @@
     </ng-container>
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
-        <td mat-cell *matCellDef="let customer"> <button mat-button> Delete </button> <button mat-button> Edit </button> </td>
+        <td mat-cell *matCellDef="let customer"> 
+            <button mat-button> Quotes </button> 
+            <button mat-button> Delete</button>
+            <button mat-button> Edit </button> 
+        </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openDetails(row)"></tr>
