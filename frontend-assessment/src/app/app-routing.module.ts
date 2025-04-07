@@ -8,6 +8,11 @@ const routes: Routes = [
   },
 
   {
+    path: 'quotes',
+    loadChildren: () => import('./componets/quote-managment/quote-managment.module').then(m => m.QuoteManagmentModule)
+  },
+
+  {
     path: '',
     redirectTo:'customers',
     pathMatch: 'full'
