@@ -103,4 +103,8 @@ export class CustomerManagementComponent implements OnInit, AfterViewInit {
     
   }
 
+  navigateToQuotes(customer: Customer) {
+    this.router.navigate(['/quotes'])
+  }
+
 }
