@@ -1,0 +1,35 @@
+{
+    "customers" : [
+        {   "id": 0,
+            "firstName": "Piet",
+            "lastName": "Smith",
+            "addresses": [
+                {
+                    "street": "Something Lane",
+                    "city": "Some City",
+                    "suburb": "Some Suburb",
+                    "postalCode": "12345"
+                },
+                {
+                    "street": "Another Lane",
+                    "city": "Another City",
+                    "suburb": "Another Suburb",
+                    "postalCode": "54321"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "firstName": "Sam",
+            "lastName": "Smith",
+            "addresses": [
+                {
+                    "street": "Something Street",
+                    "city": "Some Town",
+                    "suburb": "SomethingLand",
+                    "postalCode": "12345"
+                }
+            ]
+        }
+    ]
+}

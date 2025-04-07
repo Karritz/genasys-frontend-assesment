@@ -1,0 +1,12 @@
+{
+    "quotes": [
+        {   
+            "customerId": 0,
+            "id": 1,
+            "customerName": "Piet Smith",
+            "amount": "R200",
+            "status": "Open",
+            "dateCreated": "2011-10-05T14:48:00.000Z"
+        }
+    ]
+}
