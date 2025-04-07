@@ -99,8 +99,8 @@ export class CustomerManagementComponent implements OnInit, AfterViewInit {
   }
 
 
-  navigateToQuotes(customer: Customer) {
-    this.router.navigate([`/customers/${customer.id}`]);
+  openDetails(customer: Customer) {
+    
   }
 
 }
