@@ -5,6 +5,7 @@ import {MatTableModule} from '@angular/material/table'
 import { CustomerManagementRoutingModule } from './customer-management-routing/customer-management-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSortModule } from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatTableModule,
     CommonModule,
     CustomerManagementRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule
   ],
   exports: [CustomerManagementComponent],
   providers: []

@@ -93,6 +93,12 @@ export class CustomerManagementComponent implements OnInit, AfterViewInit {
     this.store.dispatch(setCustomers({ customers: customers }));
   }
 
+  applyFilter($event: KeyboardEvent) {
+    const filterValue = ($event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+
   navigateToQuotes(customer: Customer) {
     this.router.navigate([`/customers/${customer.id}`]);
   }
