@@ -18,7 +18,7 @@ export class CustomerManagementComponent implements OnInit, AfterViewInit {
   customers$!: Observable<Customer[]>;
 
   dataSource!: MatTableDataSource<Customer>;
-  displayedColumns = ["firstName", "lastName", "addresses"];
+  displayedColumns = ["firstName", "lastName", "addresses", "actions"];
 
   @ViewChild(MatSort) sort!: MatSort;
 

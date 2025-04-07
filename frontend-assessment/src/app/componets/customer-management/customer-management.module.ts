@@ -6,6 +6,7 @@ import { CustomerManagementRoutingModule } from './customer-management-routing/c
 import { HttpClientModule } from '@angular/common/http';
 import { MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     CommonModule,
     CustomerManagementRoutingModule,
     HttpClientModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatButtonModule
   ],
   exports: [CustomerManagementComponent],
   providers: []
