@@ -7,6 +7,7 @@ import { setCustomers } from './customer-management.actions';
 import { Router } from '@angular/router';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { CustomerManagementService } from './services/customer-management.service';
 
 @Component({
   selector: 'app-customer-management',
@@ -22,8 +23,8 @@ export class CustomerManagementComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private httpClient: HttpClient, private router: Router, private store: Store<{ customers: Customer[] }>) {
-    this.httpClient.get("./assets/data/customerData.json").subscribe((res: any) => {
+  constructor(private customerManagementService: CustomerManagementService, private router: Router, private store: Store<{ customers: Customer[] }>) {
+    this.customerManagementService.getMockCustomers().subscribe((res: any) => {
       this.setCustomers(res.customers);
     });
     this.customers$ = this.store.select('customers');
