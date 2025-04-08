@@ -14,7 +14,10 @@ export const quoteReducer = createReducer(
     })),
     on(removeQuote, (state, { quote }): Quote[] => {
         let index = state.indexOf(quote);
-        let upadatedCustomers = state.splice(index, 1);
+        let upadatedCustomers: Quote[] = [];
+        if (index > 0) {
+            upadatedCustomers = state.splice(index, 1);
+        }
         return upadatedCustomers;
     }),
     on(editQuote, (state, { quote }): Quote[] => {
