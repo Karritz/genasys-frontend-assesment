@@ -1,14 +1,22 @@
 import { createReducer, on } from '@ngrx/store';
 import { Customer } from './interfaces/Customer';
-import { addCustomer, editCustomer, removeCustomer, setCustomers } from './customer-management.actions';
+import { addCustomer, editCustomer, initialCustomers, removeCustomer, setCustomers } from './customer-management.actions';
 
 var initialState: Customer[] = [];
+var initialCall: Boolean = true;
 
 export const customerReducer = createReducer(
     initialState, 
     on(setCustomers, ( _state, { customers }):Customer[] => {
-        console.log(customers);
         return customers;
+    }),
+    on(initialCustomers, ( state, { customers }):Customer[] => {
+        if(initialCall) {
+            initialCall = false;
+            return customers
+        } else {
+            return state
+        }
     }),
     on(addCustomer, (state, { customer }) => ({
         ...state, 

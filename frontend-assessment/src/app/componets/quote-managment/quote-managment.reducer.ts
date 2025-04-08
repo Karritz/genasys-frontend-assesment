@@ -1,13 +1,22 @@
 import { createReducer, on } from '@ngrx/store';
-import { addQuote, editQuote, removeQuote, setQuotes } from './quote-managment.actions';
+import { addQuote, editQuote, initialQuotes, removeQuote, setQuotes } from './quote-managment.actions';
 import { Quote } from './interfaces/Quote';
 
 
 var initialState: Quote[] = [];
+var initialCall: Boolean = true;
 
 export const quoteReducer = createReducer(
     initialState, 
     on(setQuotes, ( _state, { quotes }) => ( quotes )),
+    on(initialQuotes, ( state, { quotes }): Quote[] => {
+        if(initialCall) {
+            initialCall = false;
+            return quotes
+        } else {
+            return state
+        }
+    }),
     on(addQuote, (state, { quote }) => ({
         ...state, 
         customers: [...state, quote]

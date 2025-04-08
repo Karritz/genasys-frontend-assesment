@@ -4,7 +4,7 @@ import { Quote } from './interfaces/Quote';
 import { MatTableDataSource } from '@angular/material/table';
 import { QuoteManagementService } from './services/quote-management.service';
 import { Store } from '@ngrx/store';
-import { setQuotes, removeQuote } from './quote-managment.actions';
+import { setQuotes, removeQuote, initialQuotes } from './quote-managment.actions';
 
 @Component({
   selector: 'app-quote-managment',
@@ -32,7 +32,7 @@ export class QuoteManagmentComponent implements OnInit {
   }
 
   setQuotes(quotes: Quote[]) {
-    this.store.dispatch(setQuotes({quotes: quotes}))
+    this.store.dispatch(initialQuotes({quotes: quotes}))
   }
 
   applyFilter($event: KeyboardEvent) {
