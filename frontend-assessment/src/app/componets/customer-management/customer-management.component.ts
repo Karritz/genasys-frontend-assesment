@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Customer } from './interfaces/Customer';
 import { Store } from '@ngrx/store';
-import { initialCustomers, setCustomers } from './customer-management.actions';
+import { initialCustomers, removeCustomer, setCustomers } from './customer-management.actions';
 import { Router } from '@angular/router';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -91,6 +91,10 @@ export class CustomerManagementComponent implements OnInit, AfterViewInit {
 
   setCustomers(customers: Customer[]) {
     this.store.dispatch(initialCustomers({ customers: customers }));
+  }
+
+  deleteCustomer(customer: Customer) {
+    this.store.dispatch(removeCustomer({customer: customer}))
   }
 
   applyFilter($event: KeyboardEvent) {

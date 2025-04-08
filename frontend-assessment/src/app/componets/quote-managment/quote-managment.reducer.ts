@@ -23,11 +23,13 @@ export const quoteReducer = createReducer(
     })),
     on(removeQuote, (state, { quote }): Quote[] => {
         let index = state.indexOf(quote);
-        let upadatedCustomers: Quote[] = [];
-        if (index > 0) {
-            upadatedCustomers = state.splice(index, 1);
+        let upadatedQuotes: Quote[] = [...state];
+        if(upadatedQuotes.length == 1) {
+            upadatedQuotes = []
+        } else {
+            upadatedQuotes = upadatedQuotes.splice(index - 1, 1);
         }
-        return upadatedCustomers;
+        return upadatedQuotes;
     }),
     on(editQuote, (state, { quote }): Quote[] => {
         let found = state.find((c) => c.id == quote.id);

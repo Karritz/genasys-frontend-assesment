@@ -6,12 +6,12 @@ var initialState: Customer[] = [];
 var initialCall: Boolean = true;
 
 export const customerReducer = createReducer(
-    initialState, 
-    on(setCustomers, ( _state, { customers }):Customer[] => {
+    initialState,
+    on(setCustomers, (_state, { customers }): Customer[] => {
         return customers;
     }),
-    on(initialCustomers, ( state, { customers }):Customer[] => {
-        if(initialCall) {
+    on(initialCustomers, (state, { customers }): Customer[] => {
+        if (initialCall) {
             initialCall = false;
             return customers
         } else {
@@ -19,12 +19,17 @@ export const customerReducer = createReducer(
         }
     }),
     on(addCustomer, (state, { customer }) => ({
-        ...state, 
+        ...state,
         customers: [...state, customer]
     })),
     on(removeCustomer, (state, { customer }): Customer[] => {
         let index = state.indexOf(customer);
-        let upadatedCustomers = state.splice(index, 1);
+        let upadatedCustomers: Customer[] = [...state];
+        if(upadatedCustomers.length == 1) {
+            upadatedCustomers = []
+        } else {
+            upadatedCustomers = upadatedCustomers.splice(index - 1, 1);
+        }
         return upadatedCustomers;
     }),
     on(editCustomer, (state, { customer }): Customer[] => {

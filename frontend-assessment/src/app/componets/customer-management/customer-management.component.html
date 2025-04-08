@@ -27,7 +27,7 @@
         <th mat-header-cell *matHeaderCellDef> Actions </th>
         <td mat-cell *matCellDef="let customer"> 
             <button mat-button (click)="navigateToQuotes(customer)"> Quotes </button> 
-            <button mat-button> Delete</button>
+            <button mat-button (click)="deleteCustomer(customer)"> Delete</button>
             <button mat-button> Edit </button> 
         </td>
     </ng-container>
