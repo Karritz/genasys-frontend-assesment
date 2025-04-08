@@ -8,13 +8,15 @@ import { QuoteManagementRoutingModule } from './quote-managment-routing/quote-ma
 import { EditQuoteComponent } from './componets/edit-quote/edit-quote.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
+import { CreateQuoteComponent } from './componets/create-quote/create-quote.component';
 
 
 
 @NgModule({
   declarations: [
     QuoteManagmentComponent,
-    EditQuoteComponent
+    EditQuoteComponent,
+    CreateQuoteComponent
   ],
   imports: [
     CommonModule,

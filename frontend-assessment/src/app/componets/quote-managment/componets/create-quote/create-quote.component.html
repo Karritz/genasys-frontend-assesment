@@ -1,0 +1,20 @@
+<div>
+    <div>
+        <mat-label> Customer Name </mat-label>
+        <input matInput [(ngModel)]="quote.customerName" placeholder="Ex. Bob" #input>
+    </div>
+    <div>
+        <mat-label> Amount </mat-label>
+        <input matInput [(ngModel)]="quote.amount" placeholder="Ex. R400" #input>
+    </div>
+    <div>
+        <mat-label> Status </mat-label>
+        <input matInput [(ngModel)]="quote.status" placeholder="Ex. Open" #input>
+    </div>
+    <button mat-button (click)="saveQuote()">
+        Save
+    </button>
+    <button mat-button (click)="close()">
+        Close
+    </button>
+</div>
