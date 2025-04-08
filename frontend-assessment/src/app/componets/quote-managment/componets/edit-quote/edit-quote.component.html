@@ -1,0 +1,16 @@
+<div>
+    <div>
+        <mat-label> Amount </mat-label>
+        <input matInput [(ngModel)]="quote.amount" placeholder="Filter" #input>
+    </div>
+    <div>
+        <mat-label> status </mat-label>
+        <input matInput [(ngModel)]="quote.status" placeholder="Filter" #input>
+    </div>
+    <button mat-button (click)="saveQuote()">
+        Save
+    </button>
+    <button mat-button (click)="close()">
+        Close
+    </button>
+</div>

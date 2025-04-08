@@ -4,7 +4,9 @@ import { Quote } from './interfaces/Quote';
 import { MatTableDataSource } from '@angular/material/table';
 import { QuoteManagementService } from './services/quote-management.service';
 import { Store } from '@ngrx/store';
-import { setQuotes, removeQuote, initialQuotes } from './quote-managment.actions';
+import { removeQuote, initialQuotes, editQuote } from './quote-managment.actions';
+import { MatDialog } from '@angular/material/dialog';
+import { EditQuoteComponent } from './componets/edit-quote/edit-quote.component';
 
 @Component({
   selector: 'app-quote-managment',
@@ -18,7 +20,7 @@ export class QuoteManagmentComponent implements OnInit {
   dataSource!: MatTableDataSource<Quote>;
   displayedColumns = ["customerName", "amount", "status", "dateCreated", "actions"]
 
-  constructor(private quoteManagementService: QuoteManagementService, private store: Store<{quotes: Quote[]}>) { 
+  constructor(private quoteManagementService: QuoteManagementService, private store: Store<{quotes: Quote[]}>, private dialog: MatDialog) { 
     this.quoteManagementService.getMockQuotes().subscribe((res: any) => {
       this.setQuotes(res.quotes);
     });
@@ -42,6 +44,14 @@ export class QuoteManagmentComponent implements OnInit {
 
   deleteQuote(quote: Quote) {
     this.store.dispatch(removeQuote({quote: quote}))
+  }
+
+  editQuote(quote: Quote) {
+    this.dialog.open(EditQuoteComponent, { data: quote ,width: '450px', minHeight: '450px'}).afterClosed().subscribe((res: Quote | undefined) => {
+      if(res) {
+        this.store.dispatch(editQuote({quote: res}));
+      }
+    })
   }
 
 }

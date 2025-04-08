@@ -32,11 +32,12 @@ export const quoteReducer = createReducer(
         return upadatedQuotes;
     }),
     on(editQuote, (state, { quote }): Quote[] => {
-        let found = state.find((c) => c.id == quote.id);
+        let upadatedQuotes: Quote[] = [...state];
+        let found = upadatedQuotes.find((c) => c.id == quote.id);
         if (found) {
-            let index = state.indexOf(found);
-            state[index] = quote;
+            let index = upadatedQuotes.indexOf(found);
+            upadatedQuotes[index] = quote;
         }
-        return state;
+        return upadatedQuotes;
     })
 )

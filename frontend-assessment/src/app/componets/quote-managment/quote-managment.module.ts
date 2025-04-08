@@ -5,12 +5,16 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { QuoteManagementRoutingModule } from './quote-managment-routing/quote-management-routing.module';
+import { EditQuoteComponent } from './componets/edit-quote/edit-quote.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
-    QuoteManagmentComponent
+    QuoteManagmentComponent,
+    EditQuoteComponent
   ],
   imports: [
     CommonModule,
@@ -19,6 +23,8 @@ import { QuoteManagementRoutingModule } from './quote-managment-routing/quote-ma
     QuoteManagementRoutingModule,
     MatFormFieldModule,
     MatButtonModule,
+    MatDialogModule,
+    FormsModule
   ],
   exports: [
     QuoteManagmentComponent

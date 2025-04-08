@@ -33,7 +33,7 @@
         <th mat-header-cell *matHeaderCellDef> Actions </th>
         <td mat-cell *matCellDef="let quote">
             <button mat-button (click)="deleteQuote(quote)"> Delete</button>
-            <button mat-button> Edit </button> 
+            <button mat-button (click)="editQuote(quote)"> Edit </button> 
         </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
