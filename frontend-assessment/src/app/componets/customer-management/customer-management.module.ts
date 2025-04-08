@@ -17,7 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     CustomerManagementRoutingModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   exports: [CustomerManagementComponent],
   providers: []

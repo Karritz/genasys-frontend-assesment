@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { Customer } from './interfaces/Customer';
 import { Store } from '@ngrx/store';
@@ -31,7 +30,7 @@ export class CustomerManagementComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.customers$.subscribe((res) => this.dataSource = new MatTableDataSource(res));
+    this.customers$.subscribe((res) =>{ console.log(res); this.dataSource = new MatTableDataSource(res)});
   }
 
   ngAfterViewInit(): void {

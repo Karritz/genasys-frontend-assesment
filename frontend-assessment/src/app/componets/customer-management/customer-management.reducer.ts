@@ -6,7 +6,10 @@ var initialState: Customer[] = [];
 
 export const customerReducer = createReducer(
     initialState, 
-    on(setCustomers, ( _state, { customers }) => ( customers )),
+    on(setCustomers, ( _state, { customers }):Customer[] => {
+        console.log(customers);
+        return customers;
+    }),
     on(addCustomer, (state, { customer }) => ({
         ...state, 
         customers: [...state, customer]

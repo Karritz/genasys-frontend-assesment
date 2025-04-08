@@ -1,1 +1,41 @@
-<p>quote-managment works!</p>
+<div>
+    <div>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Filter" #input>
+    </div>
+    <div>
+        <button mat-button> Add Quote</button>
+    </div>
+</div>
+
+<table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="customerName">
+        <th mat-header-cell *matHeaderCellDef> Customer Name </th>
+        <td mat-cell *matCellDef="let quote"> {{quote.customerName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef> Quote Amount </th>
+        <td mat-cell *matCellDef="let quote"> {{quote.amount}} </td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Quote Status </th>
+        <td mat-cell *matCellDef="let quote">
+           {{ quote.status }}
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="dateCreated">
+        <th mat-header-cell *matHeaderCellDef> Date Created </th>
+        <td mat-cell *matCellDef="let quote">
+           {{ quote.dateCreated | date }}
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let customer">
+            <button mat-button> Delete</button>
+            <button mat-button> Edit </button> 
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
