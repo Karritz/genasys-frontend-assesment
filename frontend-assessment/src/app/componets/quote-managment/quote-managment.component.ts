@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Quote } from './interfaces/Quote';
 import { MatTableDataSource } from '@angular/material/table';
@@ -14,12 +14,15 @@ import { CreateQuoteComponent } from './componets/create-quote/create-quote.comp
   templateUrl: './quote-managment.component.html',
   styleUrls: ['./quote-managment.component.scss']
 })
-export class QuoteManagmentComponent implements OnInit {
+export class QuoteManagmentComponent implements OnInit{
 
   quote$!: Observable<Quote[]>
 
   dataSource!: MatTableDataSource<Quote>;
   displayedColumns = ["customerName", "amount", "status", "dateCreated", "actions"]
+
+  selectedCustomer: string | null = sessionStorage.getItem("selectedCustomer");
+  filterValue = '';
 
   constructor(private quoteManagementService: QuoteManagementService, private store: Store<{ quotes: Quote[] }>, private dialog: MatDialog) {
     this.quoteManagementService.getMockQuotes().subscribe((res: any) => {
@@ -31,6 +34,11 @@ export class QuoteManagmentComponent implements OnInit {
   ngOnInit(): void {
     this.quote$.subscribe((res) => {
       this.dataSource = new MatTableDataSource(res);
+      if(this.selectedCustomer) {
+        this.filterValue = this.selectedCustomer
+        this.dataSource.filter = this.selectedCustomer.trim().toLowerCase();
+        sessionStorage.removeItem("selectedCustomer");
+      }
     })
   }
 

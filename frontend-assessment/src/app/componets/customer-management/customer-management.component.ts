@@ -121,12 +121,8 @@ export class CustomerManagementComponent implements OnInit, AfterViewInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-
-  openDetails(customer: Customer) {
-
-  }
-
   navigateToQuotes(customer: Customer) {
+    sessionStorage.setItem("selectedCustomer", customer.firstName + " " + customer.lastName);
     this.router.navigate(['/quotes'])
   }
 

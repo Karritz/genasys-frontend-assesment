@@ -1,7 +1,7 @@
 <div>
     <div>
         <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Filter" #input>
+        <input matInput [(ngModel)]="filterValue" (keyup)="applyFilter($event)" placeholder="Filter" #input>
     </div>
     <div>
         <button mat-button (click)="addQuote()"> Add Quote</button>
