@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { addQuote, editQuote, initialQuotes, removeQuote, setQuotes } from './quote-managment.actions';
 import { Quote } from './interfaces/Quote';
+import { Customer } from '../customer-management/interfaces/Customer';
 
 
 var initialState: Quote[] = [];
@@ -17,10 +18,9 @@ export const quoteReducer = createReducer(
             return state
         }
     }),
-    on(addQuote, (state, { quote }) => ({
-        ...state, 
-        customers: [...state, quote]
-    })),
+    on(addQuote, (state, { quote }): Quote[] => { 
+        return [...state, quote]
+    }),
     on(removeQuote, (state, { quote }): Quote[] => {
         let index = state.indexOf(quote);
         let upadatedQuotes: Quote[] = [...state];

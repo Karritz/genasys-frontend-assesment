@@ -9,6 +9,7 @@ import { EditQuoteComponent } from './componets/edit-quote/edit-quote.component'
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { CreateQuoteComponent } from './componets/create-quote/create-quote.component';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -26,7 +27,8 @@ import { CreateQuoteComponent } from './componets/create-quote/create-quote.comp
     MatFormFieldModule,
     MatButtonModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule
   ],
   exports: [
     QuoteManagmentComponent

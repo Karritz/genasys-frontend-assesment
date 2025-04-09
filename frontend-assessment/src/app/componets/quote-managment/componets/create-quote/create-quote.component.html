@@ -1,7 +1,9 @@
-<div>
+<div *ngIf="!loading">
     <div>
         <mat-label> Customer Name </mat-label>
-        <input matInput [(ngModel)]="quote.customerName" placeholder="Ex. Bob" #input>
+        <mat-select [(value)]="selectedCustomer">
+            <mat-option [value]="option" *ngFor="let option of customers">{{ option.firstName + ' ' + option.lastName}}</mat-option>
+        </mat-select>
     </div>
     <div>
         <mat-label> Amount </mat-label>
