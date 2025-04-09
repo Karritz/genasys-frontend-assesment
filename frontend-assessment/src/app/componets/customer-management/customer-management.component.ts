@@ -2,13 +2,14 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Customer } from './interfaces/Customer';
 import { Store } from '@ngrx/store';
-import { editCustomer, initialCustomers, removeCustomer, setCustomers } from './customer-management.actions';
+import { addCustomer, editCustomer, initialCustomers, removeCustomer, setCustomers } from './customer-management.actions';
 import { Router } from '@angular/router';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CustomerManagementService } from './services/customer-management.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EditCustomerComponent } from './componets/edit-customer/edit-customer.component';
+import { CreateCustomerComponent } from './componets/create-customer/create-customer.component';
 
 @Component({
   selector: 'app-customer-management',
@@ -103,6 +104,14 @@ export class CustomerManagementComponent implements OnInit, AfterViewInit {
     this.dialog.open(EditCustomerComponent, { data: customer, minWidth: '450px', minHeight: '450px' }).afterClosed().subscribe((res: Customer | undefined) => {
       if (res) {
         this.store.dispatch(editCustomer({ customer: res }));
+      }
+    })
+  }
+
+  createCustomer() {
+    this.dialog.open(CreateCustomerComponent, { minWidth: '450px', minHeight: '450px' }).afterClosed().subscribe((res: Customer | undefined) => {
+      if (res) {
+        this.store.dispatch(addCustomer({ customer: res }));
       }
     })
   }

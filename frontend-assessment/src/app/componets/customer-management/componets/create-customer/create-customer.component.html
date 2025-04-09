@@ -1,1 +1,28 @@
-<p>create-customer works!</p>
+
+<div>
+    <div>
+        <mat-label> First Name </mat-label>
+        <input matInput [(ngModel)]="customer.firstName" placeholder="Ex Bob">
+    </div>
+    <div>
+        <mat-label> Last Name </mat-label>
+        <input matInput [(ngModel)]="customer.lastName" placeholder="Ex Smith">
+    </div>
+    <div>
+        <mat-label> Addresses</mat-label>
+        <div *ngFor="let address of customer.addresses;" class="addresses">
+            <input matInput [(ngModel)]="address.street">
+            <input matInput [(ngModel)]="address.suburb">
+            <input matInput [(ngModel)]="address.city">
+            <input matInput [(ngModel)]="address.postalCode">
+            <button mat-button (click)="deleteAddress(address)"> Delete </button>
+        </div>
+        <button mat-button (click)="addAddress()"> Add Address </button>
+    </div>
+    <button mat-button (click)="saveQuote()">
+        Save
+    </button>
+    <button mat-button (click)="close()">
+        Close
+    </button>
+</div>
