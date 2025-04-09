@@ -18,14 +18,13 @@ export const customerReducer = createReducer(
             return state
         }
     }),
-    on(addCustomer, (state, { customer }) => ({
-        ...state,
-        customers: [...state, customer]
-    })),
+    on(addCustomer, (state, { customer }): Customer[] => {
+        return [...state, customer]
+    }),
     on(removeCustomer, (state, { customer }): Customer[] => {
         let index = state.indexOf(customer);
         let upadatedCustomers: Customer[] = [...state];
-        if(upadatedCustomers.length == 1) {
+        if (upadatedCustomers.length == 1) {
             upadatedCustomers = []
         } else {
             upadatedCustomers = upadatedCustomers.splice(index - 1, 1);
@@ -33,11 +32,12 @@ export const customerReducer = createReducer(
         return upadatedCustomers;
     }),
     on(editCustomer, (state, { customer }): Customer[] => {
-        let found = state.find((c) => c.id == customer.id);
+        let upadatedCustomer: Customer[] = [...state];
+        let found = upadatedCustomer.find((c) => c.id == customer.id);
         if (found) {
-            let index = state.indexOf(found);
-            state[index] = customer;
+            let index = upadatedCustomer.indexOf(found);
+            upadatedCustomer[index] = customer;
         }
-        return state;
+        return upadatedCustomer;
     })
 )

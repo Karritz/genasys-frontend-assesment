@@ -6,10 +6,16 @@ import { CustomerManagementRoutingModule } from './customer-management-routing/c
 import { MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+import { EditCustomerComponent } from './componets/edit-customer/edit-customer.component';
+import { CreateCustomerComponent } from './componets/create-customer/create-customer.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    CustomerManagementComponent
+    CustomerManagementComponent,
+    EditCustomerComponent,
+    CreateCustomerComponent
   ],
   imports: [
     MatSortModule,
@@ -18,6 +24,8 @@ import { MatButtonModule } from '@angular/material/button';
     CustomerManagementRoutingModule,
     MatFormFieldModule,
     MatButtonModule,
+    MatDialogModule,
+    FormsModule
   ],
   exports: [CustomerManagementComponent],
   providers: []

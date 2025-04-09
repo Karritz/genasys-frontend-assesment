@@ -2,11 +2,13 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Customer } from './interfaces/Customer';
 import { Store } from '@ngrx/store';
-import { initialCustomers, removeCustomer, setCustomers } from './customer-management.actions';
+import { editCustomer, initialCustomers, removeCustomer, setCustomers } from './customer-management.actions';
 import { Router } from '@angular/router';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CustomerManagementService } from './services/customer-management.service';
+import { MatDialog } from '@angular/material/dialog';
+import { EditCustomerComponent } from './componets/edit-customer/edit-customer.component';
 
 @Component({
   selector: 'app-customer-management',
@@ -22,7 +24,7 @@ export class CustomerManagementComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private customerManagementService: CustomerManagementService, private router: Router, private store: Store<{ customers: Customer[] }>) {
+  constructor(private customerManagementService: CustomerManagementService, private router: Router, private store: Store<{ customers: Customer[] }>, private dialog: MatDialog) {
     this.customerManagementService.getMockCustomers().subscribe((res: any) => {
       this.setCustomers(res.customers);
     });
@@ -30,7 +32,7 @@ export class CustomerManagementComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.customers$.subscribe((res) =>{ console.log(res); this.dataSource = new MatTableDataSource(res)});
+    this.customers$.subscribe((res) => { console.log(res); this.dataSource = new MatTableDataSource(res) });
   }
 
   ngAfterViewInit(): void {
@@ -85,7 +87,7 @@ export class CustomerManagementComponent implements OnInit, AfterViewInit {
         }
         this.dataSource.data = data
       }
-      
+
     })
   }
 
@@ -94,7 +96,15 @@ export class CustomerManagementComponent implements OnInit, AfterViewInit {
   }
 
   deleteCustomer(customer: Customer) {
-    this.store.dispatch(removeCustomer({customer: customer}))
+    this.store.dispatch(removeCustomer({ customer: customer }))
+  }
+
+  editCustomer(customer: Customer) {
+    this.dialog.open(EditCustomerComponent, { data: customer, minWidth: '450px', minHeight: '450px' }).afterClosed().subscribe((res: Customer | undefined) => {
+      if (res) {
+        this.store.dispatch(editCustomer({ customer: res }));
+      }
+    })
   }
 
   applyFilter($event: KeyboardEvent) {
@@ -104,7 +114,7 @@ export class CustomerManagementComponent implements OnInit, AfterViewInit {
 
 
   openDetails(customer: Customer) {
-    
+
   }
 
   navigateToQuotes(customer: Customer) {
